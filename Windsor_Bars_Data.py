@@ -51,30 +51,27 @@ Bars = [["Lefty's on the O", 4.2,"Yes", "341 Ouellete Ave"],
 ["Good Time Charly Bar & Grill", 4.1, "Yes", "4715 Tecumseh Rd E"],
 ["Buddies Eatery & Tap", 4.2, "No", "3206 Sandwich St S"]]
 
-# def get_live_music(bars):
-#     live_music = []
-#     for bar in bars:
-#         if bar[2] == "Yes":
-#             live_music.append(bar)
-#     return live_music
 
-# def get_no_live_music(bars):
-#     no_live_music = []
-#     for bar in bars:
-#         if bar[2] == "No":
-#             no_live_music.append(bar)
-#     return no_live_music
+live_music_lst = []
+noLive_music_lst = []
 
+live_music_dict = {}
+noLive_music_dict = {}
 
-def get_live_music(bars):
-    live_music_dict = {}
-    for bar in bars:
-        if bar[2] == "Yes":
-            live_music_dict[bar[0]] = [bar[1], bar[3]]
-        else:
-            continue
-    return live_music_dict
-    
+for bar in Bars:
+    if bar[2] == "Yes":
+        live_music_lst.append(bar)
+    elif bar[2] == "No":
+        noLive_music_lst.append(bar) 
+    else:
+        continue
 
-print(get_live_music(Bars))
-# print(get_no_live_music(Bars))
+for bar in Bars:
+    if bar[2] == "Yes":
+        live_music_dict[bar[0]] = [bar[1], bar[3]]
+    elif bar[2] == "No":
+        noLive_music_dict[bar[0]] = [bar[1], bar[3]]
+    else:
+        continue
+sorted_live_music_lst = sorted(live_music_lst, key=lambda x:x[1])
+sorted_noLive_music_lst = sorted(noLive_music_lst, key=lambda x:x[1])
